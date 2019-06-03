@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Bhartipay Demo Merchant Checkout Page</title>
+	<style type="text/css" media="screen">
+		body{width:100%;margin:0 auto;background-color:#e4eff5}
+		.signupbox{margin:20px auto 0;padding:0;font:normal 12px arial;color:#555;background:#fff;border:1px solid #d0d0d0;border-radius:5px;-webkit-box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75);-moz-box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75);box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75)}
+		.signup-headingbg{background:#194e84;background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-size:5px 5px;height:35px;border-bottom:1px solid #dadada;font:bold 16px Tahoma;color:#fff;vertical-align:middle}
+		.signuptextfield:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}
+		.signupselectfield {width: 100%;background: #fff;padding: 10px;height: 2.5em;border: #555;border: 1px solid #ccc;border-radius: 4px;}
+		font:bold 11px Arial;color:#607a8c;text-decoration:none}
+		.signupbutton{class="form-control";cursor:pointer;border-radius:5px}
+		.signupbutton,.signupbutton:hover{background-color:#449d44;border:1px solid #398439;width:40%;height:35px;font:bold 14px Tahoma;text-align:center;color:#fff;cursor:pointer;border-radius:5px}
+		.borderleftradius{border-top-left-radius:5px}
+		.borderrightradius{border-top-right-radius:5px}
+		.gradientbg{background-image:-ms-linear-gradient(top,#FEFEFF 0%,#BFD3E1 100%);background-image:-moz-linear-gradient(top,#FEFEFF 0%,#BFD3E1 100%);background-image:-o-linear-gradient(top,#FEFEFF 0%,#BFD3E1 100%);background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#FEFEFF),color-stop(1,#BFD3E1));background-image:-webkit-linear-gradient(top,#FEFEFF 0%,#BFD3E1 100%);background-image:linear-gradient(to bottom,#FEFEFF 0%,#BFD3E1 100%)}
+		.form-control {width: 60%;padding: 4px;}
+		.labelfont {padding: 4px;text-align: right;font-weight: bold;}
+		.new {padding: 5rem;font: normal 12px arial;color: #555;}
+		.new table {width: 50rem;border:1px solid #d0d0d0;border-radius:5px;-webkit-box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75);-moz-box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75);box-shadow:-1px 3px 8px -1px rgba(0,0,0,0.75)}
+		.signuptextfield {width: 98%;padding: 5px;font-size: 12px;font-family: "Verdana",sans-serif;color: #555;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+	</style>
+</head>
+<body>
+	<div class="new">
+		<form action="" method="post">
+			{% csrf_token %}
+			<table border="0" align="center" cellpadding="0" cellspacing="0" class="gradientbg">
+				<thead>
+					<tr>
+						<td colspan="3" align="center" valign="middle"></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center" valign="middle" class="signup-headingbg borderleftradius borderrightradius">Demo Checkout Page</td>
+					</tr>
+				</thead>
+				<tr>
+					<td align="right" valign="middle">&nbsp;</td>
+					<td align="center" valign="middle">&nbsp;</td>
+					<td align="center" valign="middle">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="labelfont">PAY ID: </td>
+					<td class="form-control">
+						<input type="text" name="PAY_ID" class="signuptextfield" value="{{ settings.PG_PAY_ID }}" autocomplete="off" readonly="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">MERCHANT NAME: </td>
+					<td class="form-control">
+						<input type="text" name="MERCHANTNAME" class="signuptextfield" value="Bhartipay Demo" autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">ORDER ID: </td>
+					<td class="form-control">
+						<input type="text" name="ORDER_ID" class="signuptextfield" value="BHARTID1204191528" autocomplete="off" />
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">AMOUNT: </td>
+					<td class="form-control">
+						<input type="text" name="AMOUNT" class="signuptextfield" value="1"  autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">TXNTYPE: </td>
+					<td class="form-control">
+						<input type="text" name="TXNTYPE" class="signuptextfield" value="SALE" autocomplete="off" readonly="" readonly="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">MERCHANT PAYMENT TYPE: </td>
+					<td class="form-control">
+						<select name="MERCHANT_PAYMENT_TYPE" class="signupselectfield">
+							<option value="">Select Type</option>
+							<option value="CC">CC</option>
+							<option value="DC">DC</option>
+							<option value="NB">NB</option>
+							<option value="WL">WL</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">CUSTOMER NAME: </td>
+					<td class="form-control">
+						<input type="text" name="CUST_NAME" class="signuptextfield" value="BHARTIPAY DEMO" autocomplete="off"/>
+					</td>
+				</tr>                   
+				<tr>
+					<td class="labelfont">CUSTOMER ADDRESS: </td>
+					<td class="form-control">
+						<input type="text" name="CUST_STREET_ADDRESS1" class="signuptextfield" value="Gurgaon" autocomplete="off"/>
+					</td>
+				</tr>                   
+				<tr>
+					<td class="labelfont">CUSTOMER ZIP: </td>
+					<td class="form-control">
+						<input type="text" name="CUST_ZIP" value="122016" class="signuptextfield" autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">CUSTOMER PHONE: </td>
+					<td class="form-control">
+						<input type="text" name="CUST_PHONE" value="9999999999" class="signuptextfield" autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">CUSTOMER EMAILID: </td>
+					<td class="form-control">
+						<input type="text" name="CUST_EMAIL" class="signuptextfield" value="neeraj.kumar@bhartipay.com" autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">PRODUCT DESC: </td>
+					<td class="form-control">
+						<input type="text" name="PRODUCT_DESC" class="signuptextfield" value="Demo Transaction" autocomplete="off"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">CURRENCY CODE: </td>
+					<td class="form-control">
+						<input type="text" name="CURRENCY_CODE" class="signuptextfield" value="356"autocomplete="off" readonly="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="labelfont">RETURN URL: </td>
+					<td class="form-control">
+						<input type="text" name="RETURN_URL" class="signuptextfield" value="{{ request.build_absolute_uri }}response" autocomplete="off"  readonly="" />
+					</td>
+				</tr>
+				<!-- <tr>
+					<td class="labelfont">SALT: </td>
+					<td class="form-control">
+						<input type="text" name="SALT" class="signuptextfield" value="{{ settings.PG_SALT }}" autocomplete="off" readonly="" />
+					</td>
+				</tr> -->
+				<tr>
+					<td colspan="3" align="center" valign="middle">&nbsp;</td>
+				</tr>
+				<tr>
+					<!-- <td width="50%" align="right" ></td> -->
+					<td colspan="3" align="center" valign="middle">
+						<input type="hidden" name="payment_check" value="true">
+						<input type="submit" name="button" id="button" class="signupbutton" value="Pay Now" onclick="javascript:submitForm()"/>                     
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center" valign="middle">&nbsp;</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
