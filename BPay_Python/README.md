@@ -1,2 +1,2 @@
-# BhartiPay Python Django (For python 3)
+# SubPe Python Django (For python 3)
 
